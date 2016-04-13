@@ -19,4 +19,16 @@ router.get('/', (req, res, next) => {
   });
 });
 
+router.post('/', (req, res, next) => {
+  console.log(req.body);
+  Students.insertMany(req.body, (err, newStudents) => {
+    if (err) {
+      return next(err);
+    }
+    res.status(200).json({
+      status: 'success'
+    })
+  })
+});
+
 module.exports = router;
