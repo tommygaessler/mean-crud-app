@@ -20,15 +20,41 @@ router.get('/', (req, res, next) => {
 });
 
 router.post('/', (req, res, next) => {
-  console.log(req.body);
   Students.insertMany(req.body, (err, newStudents) => {
     if (err) {
       return next(err);
     }
     res.status(200).json({
       status: 'success'
-    })
+    });
+  });
+});
+
+router.put('/:id', (req, res, next) => {
+  var id = req.params.id;
+  option = req.body;
+  console.log('option', option);
+  Students.findByIdAndUpdate(id, option, (err, update) => {
+    if(err) {
+      return next(err);
+    }
+    res.status(200).json({
+      status: 'success'
+    });
   })
+});
+
+router.delete('/remove/:id', (req, res, next) => {
+  console.log('got request');
+  var id = req.params.id;
+  Students.findOneAndRemove(id, function(err, student) {
+    if (err) {
+      return next(err);
+    }
+    res.status(200).json({
+      status: 'success'
+    });
+  });
 });
 
 module.exports = router;
