@@ -20,15 +20,36 @@ var UserSchema = new Schema({
     required: true
   }
 });
+
 // hash the password before saving it to the db
-UserSchema.pre('save', next => {
+UserSchema.pre('save', (next) => {
+
   // only hash if passwrord is new or being modified
+  if(!user.isModified('password')) {
+    return next();
+  }
 
-  // generate salt
+  // salt and hash password
+  bcrypt.hash(user.password, 10, (err, hash) => {
+    if (err) {
+      return next(err);
+    }
 
-  // hash password
+    // override the plain text password
+    user.password = hash;
+    next();
+  });
 
-  // override the plain text password
+  UserSchema.methods.comparePassword = function (password, done) {
+    bcrypt.compare(password, this.password, function(err, match) {
+      if (err) {
+        return done(err);
+      }
+      done(err, match);
+    });
+  }
+
+
 
 
 });
