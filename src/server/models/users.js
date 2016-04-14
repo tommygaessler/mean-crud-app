@@ -21,6 +21,17 @@ var UserSchema = new Schema({
   }
 });
 // hash the password before saving it to the db
+UserSchema.pre('save', next => {
+  // only hash if passwrord is new or being modified
+
+  // generate salt
+
+  // hash password
+
+  // override the plain text password
+
+
+});
 
 // compare password to verify plain text against the hashed password
 
