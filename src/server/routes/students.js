@@ -8,15 +8,16 @@ mongoose.Promise = require('bluebird');
 var Students = require('../models/students');
 
 router.get('/', (req, res, next) => {
-  Students.find({}, (err, students) => {
-    if (err) {
+  Students.find({})
+    .then(function(students) {
+      res.status(200).json({
+        status: 'success',
+        data: students
+      });
+    })
+    .catch(function(err) {
       return next(err);
-    }
-    res.status(200).json({
-      status: 'success',
-      data: students
     });
-  });
 });
 
 router.post('/', (req, res, next) => {
