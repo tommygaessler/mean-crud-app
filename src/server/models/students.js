@@ -24,7 +24,7 @@ var Student = mongoose.model('students', StudentSchema);
 var student = new Student({
   firstName: faker.name.firstName(),
   lastName: faker.name.lastName(),
-  year: faker.random.number(6);
+  year: faker.random.number(6)
 });
 
 student.save()
