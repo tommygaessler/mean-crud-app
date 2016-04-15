@@ -60,6 +60,5 @@ router.delete('/remove/:id', (req, res, next) => {
       return next(err);
     });
   });
-});
 
 module.exports = router;
