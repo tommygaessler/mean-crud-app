@@ -40,6 +40,7 @@ UserSchema.pre('save', (next) => {
     next();
   });
 
+  // compare password to verify plain text against the hashed password
   UserSchema.methods.comparePassword = function (password, done) {
     bcrypt.compare(password, this.password, function(err, match) {
       if (err) {
@@ -48,14 +49,9 @@ UserSchema.pre('save', (next) => {
       done(err, match);
     });
   }
-
-
-
-
 });
 
-// compare password to verify plain text against the hashed password
 
-var User = mongoose.model('students', UserSchema);
+var User = mongoose.model('users', UserSchema);
 
 module.exports = User;
