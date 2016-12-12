@@ -22,7 +22,7 @@ var app = express();
 
 // *** config Mongoose *** //
 var environment = process.env.NODE_ENV || 'development';
-var mongoURI = config.mongoURI[app.settings.env];
+var mongoURI = config.mongoURI.development;
 mongoose.connect(mongoURI, function(err, res) {
   if (err) {
     console.log('Error connecting to the database. ' + err);
