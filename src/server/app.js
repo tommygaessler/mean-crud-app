@@ -2,7 +2,7 @@
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
-var logger = require('morgan');
+var httplogger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var swig = require('swig');
@@ -44,7 +44,7 @@ app.set('views', path.join(__dirname, 'views'));
 
 // *** config middleware *** //
 if (process.env.NODE_ENV !== 'test') {
-  app.use(logger('dev'));
+  app.use(httplogger('dev'));
 }
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
