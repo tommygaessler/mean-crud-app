@@ -1,0 +1,4 @@
+{"level":"info","message":"Connected to database: mongodb://localhost/first-mean-app","timestamp":"2016-12-13T17:26:19.053Z"}
+{"level":"error","message":"Error connecting to the databaase: MongoError: failed to connect to server [localhost:27017] on first connect","timestamp":"2016-12-13T17:28:27.604Z"}
+{"level":"info","message":"Connected to database: mongodb://localhost/first-mean-app","timestamp":"2016-12-13T17:29:12.116Z"}
+{"level":"error","message":"Error connecting to the databaase: MongoError: failed to connect to server [localhost:27017] on first connect","timestamp":"2016-12-13T17:30:51.592Z"}
